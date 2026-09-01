@@ -91,16 +91,17 @@ app.set('broadcast', broadcast);
 
 app.use('/api', uploadRouter);
 
-// serve the react build when running in production
-if (process.env.NODE_ENV === 'production') {
-  const clientBuild = path.join(__dirname, '..', 'client', 'dist');
-  if (fs.existsSync(clientBuild)) {
-    app.use(express.static(clientBuild));
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(clientBuild, 'index.html'));
-    });
-  }
-}
+// simple health check route for the backend URL
+app.get('/', (req, res) => {
+  res.send(`
+    <html>
+      <body style="font-family: sans-serif; padding: 2rem; background: #0f1117; color: #e1e4e8;">
+        <h2>✅ API is running</h2>
+        <p>Queue system backend is online and accepting connections.</p>
+      </body>
+    </html>
+  `);
+});
 
 // ---- socket.io events ----
 
