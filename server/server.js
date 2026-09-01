@@ -21,7 +21,11 @@ const io = new Server(server, {
   }
 });
 
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-requested-with']
+}));
 app.use(express.json());
 
 // make sure uploads folder exists on startup
@@ -115,7 +119,7 @@ io.on('connection', (socket) => {
 // ---- start the server ----
 
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on http://localhost:${PORT}`);
   console.log(`Worker pool size: ${workerPool.maxWorkers}`);
 });

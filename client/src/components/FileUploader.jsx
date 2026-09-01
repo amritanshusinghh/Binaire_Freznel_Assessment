@@ -44,7 +44,8 @@ function FileUploader({ socketId }) {
     if (selectedFiles.length === 0 || uploading) return;
 
     setUploading(true);
-    const apiUrl = import.meta.env.VITE_API_URL || '';
+    const envUrl = import.meta.env.VITE_API_URL || '';
+    const apiUrl = envUrl.replace(/\/+$/, ''); // remove trailing slashes
 
     for (const file of selectedFiles) {
       const formData = new FormData();
