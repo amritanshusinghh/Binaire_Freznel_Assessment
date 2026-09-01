@@ -1,0 +1,14 @@
+{
+  "name": "binaire-freznel-assessment",
+  "version": "1.0.0",
+  "description": "Multi-user queueing system for CSV file processing",
+  "scripts": {
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "cd server && node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

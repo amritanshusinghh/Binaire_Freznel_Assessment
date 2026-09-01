@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env
+.env.local
+server/uploads/
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+test_data.csv
+sample_numbers.csv
